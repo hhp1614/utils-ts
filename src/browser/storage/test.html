@@ -1,0 +1,24 @@
+<script type="module">
+    // 引入
+    import CustomStorage from './index.js';
+    // 初始化
+    const storage = new CustomStorage({
+        mode: 'local',
+        timeout: 3 * 1000,
+    });
+    // 清除所有数据
+    storage.clearAll();
+    // 是否存在当前存储 key
+    storage.hasItem('test'); // 返回布尔值
+    // 移除存储数据
+    storage.removeItem('test');
+    // 设置存储数据
+    storage.setItem('test', { msg: 'message' });
+    // 获取存储数据
+    storage.getItem('test'); // 返回对应数据
+    // 更改存储数据
+    storage.changeItem('test', oldValue => {
+        const msg = oldValue.msg + '-add';
+        return { msg };
+    });
+</script>
